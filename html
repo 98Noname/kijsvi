@@ -1,0 +1,51 @@
+def get_marks(subject_no):
+    while True:
+        try:
+            marks = int(input(f"Enter Marks of Subject {subject_no}: "))
+            if 0 <= marks <= 100:
+                return marks
+            print("Marks should be between 0 and 100.")
+        except ValueError:
+            print("Please enter a valid number.")
+
+
+def calculate_grade(percentage):
+    if percentage >= 90:
+        return "A+"
+    if percentage >= 80:
+        return "A"
+    if percentage >= 70:
+        return "B"
+    if percentage >= 60:
+        return "C"
+    if percentage >= 40:
+        return "D"
+    return "Fail"
+
+
+def main():
+    print("===== Student Grade Management System =====")
+
+    name = input("Enter Student Name: ").strip()
+    roll = input("Enter Roll Number: ").strip()
+
+    m1 = get_marks(1)
+    m2 = get_marks(2)
+    m3 = get_marks(3)
+    m4 = get_marks(4)
+    m5 = get_marks(5)
+
+    total = m1 + m2 + m3 + m4 + m5
+    percentage = round(total / 5, 2)
+    grade = calculate_grade(percentage)
+
+    print("\n----- Result -----")
+    print("Student Name :", name)
+    print("Roll Number  :", roll)
+    print("Total Marks  :", total, "/500")
+    print("Percentage   :", percentage, "%")
+    print("Grade        :", grade)
+
+
+if __name__ == "__main__":
+    main()
